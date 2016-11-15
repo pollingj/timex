@@ -31,6 +31,10 @@ defmodule DateFormatTest.ParseStrftime do
     assert {:ok, ^date} = parse("20150713 14:01:21.038", "%Y%m%d %H:%M:%S.%L")
   end
 
+  test "parse format with weeks of year" do
+    assert {:ok, _date} = parse("2017-42", "%Y-%W")
+  end
+
   defp parse(date, fmt) do
     Timex.parse(date, fmt, :strftime)
   end
